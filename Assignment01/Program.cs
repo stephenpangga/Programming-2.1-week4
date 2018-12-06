@@ -17,26 +17,44 @@ namespace Assignment01
         void Start()
         {
             Person people = ReadPerson();
+            DisplayPerson(people);
+            WritePerson(people, "..\\..\\Week4-Ass1");
         }
-        Person ReadPerson()
+        Person ReadPerson()//Question A
         {
             Person person = new Person();
             person.Name = ReadString("Enter your name: ");
-            Console.WriteLine($"welcome {person.Name}!");
+            Console.WriteLine($"Welcome {person.Name}!");
             person.City = ReadString("Enter City: ");
             person.Age = ReadInt("Enter Age: ", 0);
-            person.Age = ReadInt("enter an age", 0);
-
             return person;
         }
-        void DisplayPerson(Person p)
+        void DisplayPerson(Person p)//Question A
         {
-         //asdasdad   
+            Console.WriteLine($"the name: {p.Name}, the city: {p.City}, the age: {p.Age}");
         }
+        void WritePerson(Person p, string filename)//question B
+        {
+            //to locate the file
+            StreamWriter writer = new StreamWriter(filename);
 
+            //to write on the file.
+            string s = Console.ReadLine();
+            while(s!="stop")
+            {
+                writer.WriteLine(s);//this will write a line in the txt file.
+
+                //to read next line
+                s = Console.ReadLine(); 
+            }
+            //to close the file
+            writer.Close();
+
+        }
+        //To read the questions!
         string ReadString(string question)
         {
-            Console.Write(question); // to display the question
+            Console.Write(question);
             return Console.ReadLine();
         }
         int ReadInt(string question, int number)
