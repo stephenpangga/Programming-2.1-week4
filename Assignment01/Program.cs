@@ -29,9 +29,9 @@ namespace Assignment01
 
             return person;
         }
-        void DisplayPerson(Person person)
+        void DisplayPerson(Person p)
         {
-            //lets go, fuck yea
+            
         }
 
         string ReadString(string question)
@@ -46,6 +46,5 @@ namespace Assignment01
             int age = int.Parse(value);
             return age;
         }
-        //this is trial for github this is to see really if it working. please show me the way
     }
 }
