@@ -31,7 +31,7 @@ namespace Assignment01
         }
         void DisplayPerson(Person person)
         {
-            
+            //lets go, fuck yea
         }
 
         string ReadString(string question)
