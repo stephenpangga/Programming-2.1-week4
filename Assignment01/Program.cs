@@ -21,13 +21,19 @@ namespace Assignment01
         Person ReadPerson()
         {
             Person person = new Person();
-            person.Name= ReadString("Enter your name: ");
+            person.Name = ReadString("Enter your name: ");
             Console.WriteLine($"welcome {person.Name}!");
             person.City = ReadString("Enter City: ");
             person.Age = ReadInt("Enter Age: ", 0);
+            person.Age = ReadInt("enter an age", 0);
 
             return person;
         }
+        void DisplayPerson(Person person)
+        {
+            
+        }
+
         string ReadString(string question)
         {
             Console.Write(question); // to display the question
@@ -40,5 +46,6 @@ namespace Assignment01
             int age = int.Parse(value);
             return age;
         }
+        //this is trial for github this is to see really if it working. please show me the way
     }
 }
