@@ -49,7 +49,7 @@ namespace Assignment01
             return person;
         }
         void DisplayPerson(Person p)//Question A
-        {
+        {   
             Console.WriteLine($"Name: {p.Name}");
             Console.WriteLine($"City: {p.City}");
             Console.WriteLine($"Age: {p.Age}");
