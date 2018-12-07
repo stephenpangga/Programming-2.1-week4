@@ -3,70 +3,83 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Assignment01
 {
-    class Program
+    class Program01
     {
         static void Main(string[] args)
         {
-            Program myProgram = new Program();
+            Program01 myProgram = new Program01();
             myProgram.Start();
             Console.ReadKey();//this is to keep the window up and running.
         }
         void Start()
         {
-            Person people = ReadPerson();
-            DisplayPerson(people);
-            WritePerson(people, "..\\..\\Week4-Ass1");
-            ReadPerson("..\\..\\Week4-Ass1");
+            Console.Write("Enter your name: ");
+            string name = Console.ReadLine();
+            if (File.Exists(name+".txt"))
+            {
+                Console.WriteLine($"Nice to see you again, {name}!");
+                Console.WriteLine($"we have the following information about you: ");
+                Person p = ReadPerson($"{name}.txt");
+                DisplayPerson(p);
+            }
+            else
+            {
+                Console.WriteLine($"Welcome {name}!");
+                Person p = ReadPerson();
+                WritePerson(p, $"{name}.txt");                
+            }
+
+
+            Console.WriteLine();
+           // WritePerson(people, "..\\..\\file_Ass1.txt");
+            
+            
         }
         Person ReadPerson()//Question A
         {
             Person person = new Person();
-            person.Name = ReadString("Enter your name: ");
-            Console.WriteLine($"Welcome {person.Name}!");
+            //person.Name = ReadString("Enter your name: ");
+            //Console.WriteLine($"Welcome {person.Name}!");
             person.City = ReadString("Enter City: ");
             person.Age = ReadInt("Enter Age: ", 0);
             return person;
         }
         void DisplayPerson(Person p)//Question A
         {
-            Console.WriteLine($"the name: {p.Name}, the city: {p.City}, the age: {p.Age}");
+            Console.WriteLine($"Name: {p.Name}");
+            Console.WriteLine($"City: {p.City}");
+            Console.WriteLine($"Age: {p.Age}");
             //this is to see if my method work for question A...
         }
         Person ReadPerson(string filename)//Question C
         {
-            Console.WriteLine("reading file...");
+            Person p = new Person();
 
             //opening the file
             StreamReader reader = new StreamReader(filename);
 
             //display information from the file 
-            while(!reader.EndOfStream)
-            {
-                string s = reader.ReadLine();//this reads the lines in the txt file 1by1 
-                Console.WriteLine(s);
-            }
+                p.Name = reader.ReadLine();
+                p.City = reader.ReadLine();
+                p.Age = int.Parse(reader.ReadLine());
             //to stop and close the file
             reader.Close();
 
-            return reader;//not sure about this. if this will return the input.
+            return p;//not sure about this. if this will return the input.
         }
         void WritePerson(Person p, string filename)//question B
         {
+       
             //to locate the file
             StreamWriter writer = new StreamWriter(filename);
-
-            //to write on the file.
-            string s = Console.ReadLine();
-            while(s!="stop")
-            {
-                writer.WriteLine(s);//this will write a line in the txt file.
-
-                //to read next line
-                s = Console.ReadLine(); 
-            }
+            writer.WriteLine(p.Name);
+            writer.WriteLine(p.City);
+            writer.WriteLine(p.Age);
+            Console.WriteLine("Your data is written to file");
             //to close the file
             writer.Close();
 
