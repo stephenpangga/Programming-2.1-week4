@@ -19,6 +19,7 @@ namespace Assignment01
             Person people = ReadPerson();
             DisplayPerson(people);
             WritePerson(people, "..\\..\\Week4-Ass1");
+            ReadPerson("..\\..\\Week4-Ass1");
         }
         Person ReadPerson()//Question A
         {
@@ -32,6 +33,25 @@ namespace Assignment01
         void DisplayPerson(Person p)//Question A
         {
             Console.WriteLine($"the name: {p.Name}, the city: {p.City}, the age: {p.Age}");
+            //this is to see if my method work for question A...
+        }
+        Person ReadPerson(string filename)//Question C
+        {
+            Console.WriteLine("reading file...");
+
+            //opening the file
+            StreamReader reader = new StreamReader(filename);
+
+            //display information from the file 
+            while(!reader.EndOfStream)
+            {
+                string s = reader.ReadLine();//this reads the lines in the txt file 1by1 
+                Console.WriteLine(s);
+            }
+            //to stop and close the file
+            reader.Close();
+
+            return reader;//not sure about this. if this will return the input.
         }
         void WritePerson(Person p, string filename)//question B
         {
