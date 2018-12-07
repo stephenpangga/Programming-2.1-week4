@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Assignment03
 {
@@ -16,13 +17,25 @@ namespace Assignment03
         }
         void Start()
         {
-            Console.WriteLine("Enter a word(to search): ");
-            string word = Console.ReadLine();
-            WordInLine(word);
+            string searchword = ReadString("Enter a wordv(to search)): ");//input
+            
         }
         bool WordInLine(string line, string word)//question A
         {
-            //if the word exist
+            if(MyString.Equal(YourString, StringComparison.OrdinalIgnoreCase))
+            {
+               return true;
+            }
+            return false;
+        }
+        int SearchWordOnFile(string filename, string word)
+        {
+
+        }
+        string ReadString(string question)
+        {
+            Console.Write(question);
+            return Console.ReadLine();
         }
     }
 }
