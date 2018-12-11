@@ -7,11 +7,11 @@ using System.IO;
 
 namespace Assignment03
 {
-    class Program
+    class Program03
     {
         static void Main(string[] args)
         {
-            Program myProgram = new Program();
+            Program03 myProgram = new Program03();
             myProgram.Start();
             Console.ReadKey();//this is to keep the window up and running.
         }
