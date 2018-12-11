@@ -30,6 +30,13 @@ namespace Assignment03
         }
         int SearchWordOnFile(string filename, string word)
         {
+            StreamReader reader = new StreamReader(filename);//openning the file 
+            int nrtimesfound = 0;
+            while(!reader.EndOfStream)//display all the lines on screen
+            {
+                string s = reader.ReadLine(); //read 1 line from the file.
+                Console.WriteLine(s);
+            }
 
         }
         string ReadString(string question)
