@@ -18,18 +18,19 @@ namespace Assignment03
         void Start()
         {
             string searchword = ReadString("Enter a wordv(to search)): ");//input
-            
+            SearchWordOnFile(,searchword);
         }
         bool WordInLine(string line, string word)//question A
         {
-            if(MyString.Equal(YourString, StringComparison.OrdinalIgnoreCase))
+            if(MyString.Equal(YourString, StringComparison.OrdinalIgnoreCase))//need to fix this
             {
                return true;
             }
             return false;
         }
         int SearchWordOnFile(string filename, string word)
-        {//from lecture presentation
+        {
+            //from lecture presentation
             StreamReader reader = new StreamReader(filename);//openning the file 
             
             while(!reader.EndOfStream)//display all the lines on screen
