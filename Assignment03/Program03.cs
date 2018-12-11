@@ -29,7 +29,7 @@ namespace Assignment03
             return false;
         }
         int SearchWordOnFile(string filename, string word)
-        {
+        {//from lecture presentation
             StreamReader reader = new StreamReader(filename);//openning the file 
             
             while(!reader.EndOfStream)//display all the lines on screen
