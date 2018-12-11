@@ -18,29 +18,39 @@ namespace Assignment03
         void Start()
         {
             string searchword = ReadString("Enter a wordv(to search)): ");//input
-            SearchWordOnFile(,searchword);
+
+            SearchWordOnFile("tweets-donaldtrump.txt", searchword);
         }
         bool WordInLine(string line, string word)//question A
         {
-            if(MyString.Equal(YourString, StringComparison.OrdinalIgnoreCase))//need to fix this
+            //if(MyString.Equal(YourString, StringComparison.OrdinalIgnoreCase))//need to fix this
+            if(line.Contains(word))//need to find a way to make this case sensitive
             {
                return true;
             }
             return false;
         }
-        int SearchWordOnFile(string filename, string word)
+        void SearchWordOnFile(string filename, string word)//question B
         {
             //from lecture presentation
             StreamReader reader = new StreamReader(filename);//openning the file 
-            
+            int found = 0;
             while(!reader.EndOfStream)//display all the lines on screen
             {
                 string s = reader.ReadLine(); //read 1 line from the file.
-                Console.WriteLine(s);
+                if(WordInLine(s,word))
+                {
+                    found++;
+                    Console.WriteLine(s);
+                }
+                //Console.WriteLine(s);
             }
-
-            //close file
-            reader.Close();
+            reader.Close();//to close the file.
+            //return found;
+        }
+        void DisplayWordInLine(string line, string word)
+        {
+            int begin = line.IndexOf(word);
 
         }
         string ReadString(string question)
