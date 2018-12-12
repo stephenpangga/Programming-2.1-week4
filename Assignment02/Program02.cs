@@ -57,8 +57,13 @@ namespace Assignment02
         string SelectWord(List<string> words)
         {
             Random rnd = new Random();//random number generator
-            int values = rnd.Next(0, words.Count);
-            string randomWords = words.ElementAt(values);//setting number to the random numbers from 1-3
+            string randomWords;
+            do
+            {
+                int values = rnd.Next(0, words.Count);
+                randomWords = words.ElementAt(values);//setting number to the random words
+            }
+            while (randomWords.Length <= 3);
             return randomWords;
         }
         bool PlayHangman(HangmanGame hangman)
