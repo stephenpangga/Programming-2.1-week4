@@ -207,9 +207,9 @@ namespace Assignment04
                 }
                
             }
-            catch
+            catch(Exception exception)
             {
-                //Console.WriteLine("Exception occured: {0}", exception.Message);
+                Console.WriteLine("Exception occured: {0}", exception.Message);
             }
 
             // }
