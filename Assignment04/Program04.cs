@@ -19,8 +19,8 @@ namespace Assignment04
         {
             RegularCandies[,] playingField = new RegularCandies[10, 10];//question B
             InitCandies(playingField);
-            DisplayCandies(playingField);
-            
+            //DisplayCandies(playingField);
+            DisplayCandies(ReadPlayingField("candycrush.txt"));
             //for the different display
             bool scorerow = ScoreRowPresent(playingField);
             bool scorecolumn = ScoreColumnnPresent(playingField);
@@ -43,7 +43,8 @@ namespace Assignment04
                 Console.WriteLine("no column score");
             }
             //assignment 4, week 4.
-            WritePlayingField(playingField, "candycrush.txt");
+            //WritePlayingField(playingField, "candycrush.txt");
+            
         }
         void InitCandies(RegularCandies[,] matrix)// question C
         {
@@ -171,16 +172,31 @@ namespace Assignment04
             }
             writer.Close();
         }
-        /*RegularCandies[,] ReadPlayingField(string filename)
+        RegularCandies[,] ReadPlayingField(string filename)
         {
+            RegularCandies[,] playingField = new RegularCandies[10, 10];//add this here so that, it can use the size of the arrays
             StreamReader reader = new StreamReader(filename);
-            while(!reader.EndOfStream)
-            {
-                string s = reader.ReadLine();
-                string[]field = s.Split();
-            }
+            //while(!reader.EndOfStream)
+           // {
+                
+               // string[]field = s.Split();
+
+                for (int i = 0; i < playingField.GetLength(0); i++)
+                {
+                    string s = reader.ReadLine();//sisi should me the way
+                    string[] numberStrings = s.Split(' ');
+                    for (int j = 0; j < playingField.GetLength(1); j++)
+                    {
+                        playingField[i, j] = (RegularCandies)int.Parse(numberStrings[j]);
+                    }
+                }
+               
+           // }
             reader.Close();
-            for
-        }*/
+            return playingField;
+
+
+
+        }
     }
-}
+}    
