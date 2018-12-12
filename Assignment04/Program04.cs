@@ -18,11 +18,10 @@ namespace Assignment04
         void Start()
         {
             RegularCandies[,] playingField = new RegularCandies[10, 10];//question B
-            InitCandies(playingField);
+            //InitCandies(playingField);
             //DisplayCandies(playingField);
-            DisplayCandies(ReadPlayingField("candycrush.txt"));
             //for the different display
-            bool scorerow = ScoreRowPresent(playingField);
+            /*bool scorerow = ScoreRowPresent(playingField);
             bool scorecolumn = ScoreColumnnPresent(playingField);
 
             //this is for the different display, got help from jurek
@@ -42,9 +41,24 @@ namespace Assignment04
             {
                 Console.WriteLine("no column score");
             }
+            */
             //assignment 4, week 4.
-            //WritePlayingField(playingField, "candycrush.txt");
-            
+            Console.Write("Insert file name:" );
+            string file = Console.ReadLine();
+            //DisplayCandies(ReadPlayingField("candycrush.txt"));
+            if (File.Exists(file + ".txt"))
+            {
+                Console.WriteLine("Loading file.........");
+                DisplayCandies(ReadPlayingField($"{file}.txt"));
+            }
+            else
+            {
+                Console.WriteLine("file doesnt not exist, making a new file..");
+                InitCandies(playingField);
+                WritePlayingField(playingField, $"{file}.txt");
+                DisplayCandies(playingField);
+            }           
+
         }
         void InitCandies(RegularCandies[,] matrix)// question C
         {
@@ -154,7 +168,8 @@ namespace Assignment04
             //Console.WriteLine("no colunn score")
             return false;
         }
-        //week 4 assignments
+        //////////////week 4 assignments//////////////
+
         void WritePlayingField(RegularCandies[,] playingField, string filename)
         {
             //to write things in txt
@@ -177,26 +192,20 @@ namespace Assignment04
             RegularCandies[,] playingField = new RegularCandies[10, 10];//add this here so that, it can use the size of the arrays
             StreamReader reader = new StreamReader(filename);
             //while(!reader.EndOfStream)
-           // {
-                
+           // {    
                // string[]field = s.Split();
-
                 for (int i = 0; i < playingField.GetLength(0); i++)
                 {
-                    string s = reader.ReadLine();//sisi should me the way
+                    string s = reader.ReadLine();//sisi showed me the way
                     string[] numberStrings = s.Split(' ');
                     for (int j = 0; j < playingField.GetLength(1); j++)
                     {
                         playingField[i, j] = (RegularCandies)int.Parse(numberStrings[j]);
                     }
                 }
-               
            // }
             reader.Close();
             return playingField;
-
-
-
         }
     }
 }    
