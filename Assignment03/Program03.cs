@@ -41,8 +41,8 @@ namespace Assignment03
                 if(WordInLine(s,word))
                 {
                     found++;
-                    //Console.WriteLine(s);
-                    DisplayWordInLine(s, word);
+                    Console.WriteLine(s);
+                    
                 }
                 //Console.WriteLine(s);
             }
@@ -55,9 +55,11 @@ namespace Assignment03
             int begin = line.IndexOf(word);
             string before  = line.Substring(0, begin);
             Console.Write(before);//normal color to start with.
+
             string coloredword = line.Substring(begin, word.Length);
             Console.ForegroundColor = ConsoleColor.Red;//turn the word to red
             Console.Write(coloredword);//this will be red since its after the foreground color
+
             string after = line.Substring(begin + word.Length);
             //this will reset the color
             Console.ResetColor();
