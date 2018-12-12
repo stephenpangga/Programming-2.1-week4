@@ -194,6 +194,8 @@ namespace Assignment04
             //while(!reader.EndOfStream)
            // {    
                // string[]field = s.Split();
+            try//im not sure if im using this properly
+            {
                 for (int i = 0; i < playingField.GetLength(0); i++)
                 {
                     string s = reader.ReadLine();//sisi showed me the way
@@ -203,9 +205,17 @@ namespace Assignment04
                         playingField[i, j] = (RegularCandies)int.Parse(numberStrings[j]);
                     }
                 }
-           // }
+               
+            }
+            catch
+            {
+                //Console.WriteLine("Exception occured: {0}", exception.Message);
+            }
+
+            // }
             reader.Close();
             return playingField;
+
         }
     }
 }    
