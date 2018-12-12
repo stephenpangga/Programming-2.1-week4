@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Assignment02
 {
@@ -17,9 +18,9 @@ namespace Assignment02
         void Start()
         {
             List<string> words = new List<string>();
-            words = ListOfWords();
+            words = ListOfWords("words.txt");
             HangmanGame hangman = new HangmanGame();
-            hangman.Init("backdoor");
+            hangman.Init(SelectWord(words));
             //this is to see if the words are being displayed.
             //Console.WriteLine("the secret word is: " + hangman.secretWord);
             //Console.WriteLine("the guessed word is: " + hangman.guessedWord);
@@ -33,18 +34,30 @@ namespace Assignment02
             }
             
         }
-        List<string> ListOfWords()
+        List<string> ListOfWords(string filename)
         {
-            List<string> Lwords = new List<string>();
-            Lwords.Add("Programming");
-            Lwords.Add("Modelling");
-            Lwords.Add("WebDesign");
+             List<string> Lwords = new List<string>();
+             /*Lwords.Add("Programming");
+             Lwords.Add("Modelling");
+             Lwords.Add("WebDesign");
+             return Lwords;
+             */
+            //to read all the words from a file
+            //opening the file
+            StreamReader reader = new StreamReader(filename);
+            while(!reader.EndOfStream)
+            {
+                string s = reader.ReadLine();
+                Lwords.Add(s);
+            }
+            reader.Close();
             return Lwords;
-        }
+        }      
+
         string SelectWord(List<string> words)
         {
             Random rnd = new Random();//random number generator
-            int values = rnd.Next(0, 2);
+            int values = rnd.Next(0, words.Count);
             string randomWords = words.ElementAt(values);//setting number to the random numbers from 1-3
             return randomWords;
         }
@@ -103,5 +116,6 @@ namespace Assignment02
             blacklistLetters.Add(letter);
             return letter;
         }
+
     }
 }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Assignment04
 {
-    class Program
+    class Program04
     {
         static void Main(string[] args)
         {
-            Program myProgram = new Program();
+            Program04 myProgram = new Program04();
             myProgram.Start();
             Console.ReadKey();//this is to keep the window up and running.
         }
@@ -23,7 +24,7 @@ namespace Assignment04
             bool scorerow = ScoreRowPresent(playingField);
             bool scorecolumn = ScoreColumnnPresent(playingField);
 
-            //this i for the different display, got help from jurek
+            //this is for the different display, got help from jurek
             if (scorerow)
             {
                 Console.WriteLine("row score");
@@ -149,5 +150,15 @@ namespace Assignment04
             //Console.WriteLine("no colunn score")
             return false;
         }
+        //week 4 assignments
+        void WritePlayingField(RegularCandies[,] playingField, string filename)
+        {
+            string posfield = " ";
+            //to write things in txt
+            StreamWriter writer = new StreamWriter(filename);
+            //the code for the row
+
+        }
     }
+
 }
