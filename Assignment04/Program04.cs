@@ -20,6 +20,7 @@ namespace Assignment04
             RegularCandies[,] playingField = new RegularCandies[10, 10];//question B
             InitCandies(playingField);
             DisplayCandies(playingField);
+            
             //for the different display
             bool scorerow = ScoreRowPresent(playingField);
             bool scorecolumn = ScoreColumnnPresent(playingField);
@@ -41,6 +42,8 @@ namespace Assignment04
             {
                 Console.WriteLine("no column score");
             }
+            //assignment 4, week 4.
+            WritePlayingField(playingField, "candycrush.txt");
         }
         void InitCandies(RegularCandies[,] matrix)// question C
         {
@@ -153,12 +156,31 @@ namespace Assignment04
         //week 4 assignments
         void WritePlayingField(RegularCandies[,] playingField, string filename)
         {
-            string posfield = " ";
             //to write things in txt
             StreamWriter writer = new StreamWriter(filename);
+            string s="";//not sure if supposed to be empty or Console.ReadLine();
             //the code for the row
-
+            for (int i =0; i < playingField.GetLength(0); i++)//row
+            {
+                s = ""; //to make it look nicer?
+                for(int j=0; j<playingField.GetLength(1); j++)//column
+                {
+                    s += (int)playingField[i, j] + " ";
+                }
+                writer.WriteLine(s);
+            }
+            writer.Close();
         }
+        /*RegularCandies[,] ReadPlayingField(string filename)
+        {
+            StreamReader reader = new StreamReader(filename);
+            while(!reader.EndOfStream)
+            {
+                string s = reader.ReadLine();
+                string[]field = s.Split();
+            }
+            reader.Close();
+            for
+        }*/
     }
-
 }
