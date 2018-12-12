@@ -41,8 +41,8 @@ namespace Assignment03
                 if(WordInLine(s,word))
                 {
                     found++;
-                    Console.WriteLine(s);
-                    
+                    //Console.WriteLine(s);
+                    DisplayWordInLine(s, word);
                 }
                 //Console.WriteLine(s);
             }
